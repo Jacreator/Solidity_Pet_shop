@@ -14,12 +14,12 @@ contract("adoption", function (accounts) {
       instance = await adoption.deployed();
     });
 
-    it('should return true', async () => {
+    it('calling a right pet id should return true', async () => {
       const result = await instance.adopt.call(1);
       assert.equal(result, true, "should return true");
     });
 
-    it('should return false', async () => {
+    it('calling a wrong pet id should return false', async () => {
       const result = await instance.adopt.call(0);
       assert.equal(result, false, "should return false");
     });
@@ -28,6 +28,21 @@ contract("adoption", function (accounts) {
       await instance.adopt.sendTransaction(1, { from: accounts[0] });
       const result = await instance.adopters.call(1);
       assert.equal(result, accounts[0], "incorrect result");
+    });
+
+    it('Should get adopter address by pet id in an array', async () => {
+      const result = await instance.getAdopters.call(); 
+      assert.equal(result[1], accounts[0], "Owner should be the first element");
+    });
+      
+    it('Should throw error if invalid pet id is given', async () => {
+      try {
+        await instance.adopt.sendTransaction(20, { from: accounts[0] });
+        // case the test did not catch an error
+        assert.fail(true, false, "should have thrown an error");
+      } catch (error) {
+        assert.include(error.message, "VM Exception while processing transaction: revert", "should throw error and revert");
+      }
     });
   });
 });
