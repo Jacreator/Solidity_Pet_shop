@@ -86,7 +86,7 @@
   "sourceMap": "66:673:0:-;;;172:88;8:9:-1;5:2;;;30:1;27;20:12;5:2;172:88:0;245:10;237:5;;:18;;;;;;;;;;;;;;;;;;66:673;;;;;;",
   "deployedSourceMap": "66:673:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;66:673:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;523:90;;;:::i;:::-;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;523:90:0;;;;;;;;;;;;;;;;140:27;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;140:27:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;617:120;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;617:120:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;116:20;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;523:90;567:18;;:::i;:::-;600:8;593:15;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;523:90;:::o;140:27::-;;;;;;;;;;;;;;;;;;;;;;;:::o;617:120::-;679:4;664:5;454:1;441:11;:14;;:33;;;;;472:2;459:11;:15;;441:33;433:42;;;;;;709:5;;;;;;;;;;;691:8;700:5;691:15;;;;;;;;;:23;;;;;;;;;;;;;;;;;;727:5;720:12;;617:120;;;;:::o;116:20::-;;;;;;;;;;;;;:::o;66:673::-;;;;;;;;;;;29:2:-1;21:6;17:15;117:4;105:10;97:6;88:34;148:4;140:6;136:17;126:27;;0:157;66:673:0;;;;:::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\ncontract Adoption {\n\n  // The pet being adopted\n  address public owner;\n  address[16] public adopters;\n\n  constructor() public {\n    // Initialize the public variable\n    owner = msg.sender;\n  }\n\n  // The pet being adopted\n  modifier onlyOwner {\n    require(msg.sender == owner);\n    _;\n  }\n\n  // the pet id is correct\n  modifier petIdChecker(uint petIdNumber) {\n    require(petIdNumber>=0 && petIdNumber<=15);\n    _;\n  }\n\n  // get pet ids from the array\n  function getAdopters() public view returns (address[16] memory) {\n    return adopters;\n  }\n\n  function adopt(uint petId) public petIdChecker(petId) returns(uint) {\n    adopters[petId] = owner;\n    return petId;\n  }\n}\n",
-  "sourcePath": "C:\\Code\\Solidity\\pet-shop\\contracts\\Adoption.sol",
+  "sourcePath": "C:\\Code\\Solidity\\Solidity_Pet_shop\\contracts\\Adoption.sol",
   "ast": {
     "absolutePath": "project:/contracts/Adoption.sol",
     "exportedSymbols": {
@@ -1967,8 +1967,7 @@
     }
   },
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-05-13T12:02:38.289Z",
-  "networkType": "ethereum",
+  "updatedAt": "2022-05-21T23:02:11.518Z",
   "devdoc": {
     "methods": {}
   },

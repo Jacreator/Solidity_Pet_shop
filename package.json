@@ -10,9 +10,14 @@
     "dev": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "James Adakole",
   "license": "ISC",
   "devDependencies": {
     "lite-server": "^2.3.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "truffle": "^5.0.0-next.23",
+    "truffle-hdwallet-provider": "^1.0.0-web3one.4"
   }
 }
